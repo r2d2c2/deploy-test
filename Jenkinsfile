@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk' // Java 환경 설정
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk' // Java 17 설치 경로
+        PATH = "${JAVA_HOME}/bin:${env.PATH}" // Java PATH 추가
     }
 
     stages {
@@ -16,9 +16,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Granting execute permission to mvnw...'
-                sh 'chmod +x ./mvnw' // 실행 권한 추가
+                sh 'chmod +x ./mvnw' // Maven Wrapper 실행 권한 추가
                 echo 'Building the Spring Boot application...'
-                sh './mvnw clean package' // Maven 빌드
+                sh './mvnw clean package' // Maven 빌드 실행
             }
         }
         stage('Test') {
@@ -30,7 +30,7 @@ pipeline {
         stage('Run') {
             steps {
                 echo 'Starting the Spring Boot application...'
-                sh 'nohup java -jar target/*.jar &' // Spring Boot 실행
+                sh 'nohup java -jar target/*.jar &' // Spring Boot 애플리케이션 실행
             }
         }
     }
