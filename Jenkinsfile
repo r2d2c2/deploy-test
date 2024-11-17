@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk' // Java 환경 설정
+        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk' // Java 환경 설정
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
 
