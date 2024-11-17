@@ -1,10 +1,7 @@
 pipeline {
     agent any
 
-    environment {
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk' // Java 17 설치 경로
-        PATH = "${JAVA_HOME}/bin:${env.PATH}" // Java PATH 추가
-    }
+   
 
     stages {
         stage('Checkout') {
